@@ -54,8 +54,11 @@ Inventory Management App - Sidebar and Dark Mode
 - Submission deadline is May 25, 2023 by 11:59 PM.
 
 ## Evaluation Criteria
+- Implementation of APIs for back-end service.
 - Implementation of the collapsible sidebar with custom SVG icons.
 - Implementation of the Dark mode feature with proper styling and contrast.
+- Export functionality implementation.
+- Sales management page interface and functionality.
 - Compatibility and responsiveness across different screen sizes and devices.
 - Adherence to Angular and PrimeNG best practices.
 - Code readability, structure, and reusability.
