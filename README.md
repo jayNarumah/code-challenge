@@ -7,7 +7,7 @@ Inventory Management App - Sidebar and Dark Mode
 
 ## Requirements
 ### Implement a collapsible sidebar
-- The sidebar should display navigation links and collapse/expand when clicked.
+- The sidebar should display navigation links and collapse/expand when the toggle button is clicked.
 - Icons should be visible on collapse.
 - Ensure proper styling and transitions for the collapsible behavior.
 - Preserve the state of the sidebar (collapsed or expanded) across page reloads.
