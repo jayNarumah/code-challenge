@@ -1,4 +1,4 @@
-<img src="/assets/images/logo.png" width="600" height="400">
+<img src="./assets/images/logo.png" width="600" height="400">
 
 # Challenge Title
 Inventory Management App - Sidebar and Dark Mode
