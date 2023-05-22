@@ -44,7 +44,7 @@ Inventory Management App - Sidebar and Dark Mode
 - Implement code reusability and maintainability.
 
 ## Guidelines
-- **Do Not** use PrimeNG Icons, **Only** use SVG icons from [Feather Icons](feathericons.com) for each navigation link.
+- **Do Not** use PrimeNG Icons, **Only** use SVG icons from [Feather Icons](https://feathericons.com) for each navigation link.
 - Leverage CSS and Angular styles for customizing the appearance of the sidebar and the display theme.
 - Employ best practices for code readability, organization, and maintainability.
 
