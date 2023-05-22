@@ -6,21 +6,38 @@ Inventory Management App - Sidebar and Dark Mode
 - Your task is to enhance the app by implementing a collapsible sidebar with custom SVG icons and adding a Dark mode feature.
 
 ## Requirements
-### Implement a collapsible sidebar
+### Back-End Service
+#### Create an API endpoint /products that support GET, POST, PUT, and DELETE operations
+- Each product should have the following properties `id`, `code`, `name`, `description`, `price`, `category`, `quantity` ,`inventoryStatus`, `rating`.
+- Implement data validation for the product properties (e.g., non-negative quantity, positive price).
+- Store the products in memory (no need for a persistent database).
+#### Create an API endpoint /sales that support GET, POST, PUT, and DELETE operations.
+- Each sale should have the following properties: id, productId, quantity, and timestamp.
+- Implement data validation for the product properties (e.g., non-negative quantity, positive price).
+- Store the products in memory (no need for a persistent database).
+
+### Front-End 
+#### Create page for sales management
+- Users can create, view and update Sales information.
+
+#### Implement a collapsible sidebar
 - The sidebar should display navigation links and collapse/expand when the toggle button is clicked.
 - Icons should be visible on collapse.
 - Ensure proper styling and transitions for the collapsible behavior.
 - Preserve the state of the sidebar (collapsed or expanded) across page reloads.
 - **Collapsed** sidebar width according to preference but should not exceed 7% of page width.
 - **Expanded** sidebar width according to preference but should not exceed 16% of page width.
-- Create pages for links to illustrate active and inactive state.
+- The links on the sidebard should be the sales management page, inventory page, and buttons to toggle Dark mode and the sidebar.
 
-### Implement Dark mode
+#### Implement Dark mode
 - Add a Dark mode toggle button/switch to the app.
 - When Dark mode is enabled, apply appropriate CSS styles to switch the app's color scheme to a dark theme.
 - Make sure to handle the visibility and contrast of text and components for optimal user experience.
 
-### Non-Functional Requirements
+#### Implement the "Export" service
+- Users should be able to extract inventory and sales information to pdf.
+
+#### Non-Functional Requirements
 - Make sure the collapsible sidebar and Dark mode feature work across different screen sizes and devices.
 - Follow Angular and PrimeNG style guides and best practices.
 - Structure the code using appropriate components, services, and modules.
