@@ -11,14 +11,14 @@ Inventory Management App - Sidebar and Dark Mode
 - Icons should be visible on collapse.
 - Ensure proper styling and transitions for the collapsible behavior.
 - Preserve the state of the sidebar (collapsed or expanded) across page reloads.
-**Collapsed** sidebar width according to preference but should not exceed 7% of page width.
-**Expanded** sidebar width according to preference but should not exceed 16% of page width.
-Create pages for links to illustrate active and inactive state.
+- **Collapsed** sidebar width according to preference but should not exceed 7% of page width.
+- **Expanded** sidebar width according to preference but should not exceed 16% of page width.
+- Create pages for links to illustrate active and inactive state.
 
 ### Implement Dark mode
 - Add a Dark mode toggle button/switch to the app.
 - When Dark mode is enabled, apply appropriate CSS styles to switch the app's color scheme to a dark theme.
-Make sure to handle the visibility and contrast of text and components for optimal user experience.
+- Make sure to handle the visibility and contrast of text and components for optimal user experience.
 
 ### Non-Functional Requirements
 - Make sure the collapsible sidebar and Dark mode feature work across different screen sizes and devices.
@@ -40,9 +40,9 @@ Make sure to handle the visibility and contrast of text and components for optim
 - Implementation of the collapsible sidebar with custom SVG icons.
 - Implementation of the Dark mode feature with proper styling and contrast.
 - Compatibility and responsiveness across different screen sizes and devices.
-Adherence to Angular and PrimeNG best practices.
-Code readability, structure, and reusability.
-Overall user experience and attention to detail.
+- Adherence to Angular and PrimeNG best practices.
+- Code readability, structure, and reusability.
+- Overall user experience and attention to detail.
 
 ## Development server
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
