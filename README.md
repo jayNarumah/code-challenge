@@ -12,7 +12,7 @@ Inventory Management App - Sidebar and Dark Mode
 - Implement data validation for the product properties (e.g., non-negative quantity, positive price).
 - Store the products in memory (no need for a persistent database).
 #### Create an API endpoint /sales that support GET, POST, PUT, and DELETE operations.
-- Each sale should have the following properties: id, productId, quantity, and timestamp.
+- Each sale should have the following properties: `id`, `productId`, `quantity`,`total` and `timestamp`.
 - Implement data validation for the product properties (e.g., non-negative quantity, positive price).
 - Store the products in memory (no need for a persistent database).
 
