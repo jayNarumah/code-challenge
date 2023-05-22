@@ -34,7 +34,7 @@ Inventory Management App - Sidebar and Dark Mode
 - When Dark mode is enabled, apply appropriate CSS styles to switch the app's color scheme to a dark theme.
 - Make sure to handle the visibility and contrast of text and components for optimal user experience.
 
-#### Implement the "Export" service
+#### Implement the "Export" functionality
 - Users should be able to extract inventory and sales information to pdf.
 
 #### Non-Functional Requirements
@@ -51,7 +51,7 @@ Inventory Management App - Sidebar and Dark Mode
 ## Submission
 - Create a fork of the existing GitHub repository.
 - Commit your changes with clear and concise commit messages.
-- Submission deadline is May 25, 2023 by 11:00 AM.
+- Submission deadline is May 25, 2023 by 11:59 PM.
 
 ## Evaluation Criteria
 - Implementation of the collapsible sidebar with custom SVG icons.
