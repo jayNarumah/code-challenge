@@ -49,8 +49,10 @@ Inventory Management App - Sidebar and Dark Mode
 - Employ best practices for code readability, organization, and maintainability.
 
 ## Submission
-- Create a fork of the existing GitHub repository.
+- Create a fork of the GitHub repository.
 - Commit your changes with clear and concise commit messages.
+- Once you have completed the challenge, invite @7madayl3b and @netDbug as collaborators to your forked repository. 
+- Send an email to ahalbatu2@yahoo.com with the subject line "Code Challenge Submission done" Include your forked repository's URL in the email.
 - Submission deadline is May 25, 2023 by 11:59 PM.
 
 ## Evaluation Criteria
