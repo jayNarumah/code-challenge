@@ -4,43 +4,44 @@
 Inventory Management App - Sidebar and Dark Mode
 
 ## Description
-You have been provided with a mini inventory CRUD app built with Angular and PrimeNG components. Your task is to enhance the app by implementing a collapsible sidebar with custom SVG icons and adding a Dark mode feature.
+- You have been provided with a mini inventory CRUD app built with Angular and PrimeNG components. 
+- Your task is to enhance the app by implementing a collapsible sidebar with custom SVG icons and adding a Dark mode feature.
 
 ## Requirements
 ### Implement a collapsible sidebar
-The sidebar should display navigation links and collapse/expand when clicked.
-Icons should be visible on collapse.
-Ensure proper styling and transitions for the collapsible behavior.
-Preserve the state of the sidebar (collapsed or expanded) across page reloads.
+- The sidebar should display navigation links and collapse/expand when clicked.
+- Icons should be visible on collapse.
+- Ensure proper styling and transitions for the collapsible behavior.
+- Preserve the state of the sidebar (collapsed or expanded) across page reloads.
 **Collapsed** sidebar width according to preference but should not exceed 7% of page width.
 **Expanded** sidebar width according to preference but should not exceed 16% of page width.
 Create pages for links to illustrate active and inactive state.
 
 ### Implement Dark mode
-Add a Dark mode toggle button/switch to the app.
-When Dark mode is enabled, apply appropriate CSS styles to switch the app's color scheme to a dark theme.
+- Add a Dark mode toggle button/switch to the app.
+- When Dark mode is enabled, apply appropriate CSS styles to switch the app's color scheme to a dark theme.
 Make sure to handle the visibility and contrast of text and components for optimal user experience.
 
 ### Non-Functional Requirements
-Make sure the collapsible sidebar and Dark mode feature work across different screen sizes and devices.
-Follow Angular and PrimeNG style guides and best practices.
-Structure the code using appropriate components, services, and modules.
-Implement code reusability and maintainability.
+- Make sure the collapsible sidebar and Dark mode feature work across different screen sizes and devices.
+- Follow Angular and PrimeNG style guides and best practices.
+- Structure the code using appropriate components, services, and modules.
+- Implement code reusability and maintainability.
 
 ## Guidelines
-**Do Not** use PrimeNG Icons, **Only** use SVG icons from [Feather Icons](feathericons.com) for each navigation link.
-Leverage CSS and Angular styles for customizing the appearance of the sidebar and the display theme.
-Employ best practices for code readability, organization, and maintainability.
+- **Do Not** use PrimeNG Icons, **Only** use SVG icons from [Feather Icons](feathericons.com) for each navigation link.
+- Leverage CSS and Angular styles for customizing the appearance of the sidebar and the display theme.
+- Employ best practices for code readability, organization, and maintainability.
 
 ## Submission
-Create a fork of the existing GitHub repository.
-Commit your changes with clear and concise commit messages.
-Submission deadline is May 25, 2023 by 11:00 AM.
+- Create a fork of the existing GitHub repository.
+- Commit your changes with clear and concise commit messages.
+- Submission deadline is May 25, 2023 by 11:00 AM.
 
 ## Evaluation Criteria
-Implementation of the collapsible sidebar with custom SVG icons.
-Implementation of the Dark mode feature with proper styling and contrast.
-Compatibility and responsiveness across different screen sizes and devices.
+- Implementation of the collapsible sidebar with custom SVG icons.
+- Implementation of the Dark mode feature with proper styling and contrast.
+- Compatibility and responsiveness across different screen sizes and devices.
 Adherence to Angular and PrimeNG best practices.
 Code readability, structure, and reusability.
 Overall user experience and attention to detail.
