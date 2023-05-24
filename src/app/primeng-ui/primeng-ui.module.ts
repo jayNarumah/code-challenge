@@ -18,6 +18,7 @@ import { MenuModule } from 'primeng/menu';
 import { MenubarModule } from 'primeng/menubar';
 import { SidebarModule } from 'primeng/sidebar';
 import { ToastModule } from 'primeng/toast';
+import { ImageModule } from 'primeng/image';
 
 const modules = [
     TableModule,
@@ -36,7 +37,8 @@ const modules = [
     MenuModule,
     BreadcrumbModule,
     SidebarModule,
-    ToastModule
+    ToastModule,
+    ImageModule
 
 ];
 

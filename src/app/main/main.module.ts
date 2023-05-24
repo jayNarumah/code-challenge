@@ -18,7 +18,7 @@ const routes: Routes = [
                 component: ManageItemsComponent
             },
             {
-                path: 'manage-sales',
+                path: 'sales',
                 component: ManageSalesComponent
             }
         ]

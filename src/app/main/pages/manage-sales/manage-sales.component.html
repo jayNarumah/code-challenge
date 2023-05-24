@@ -1,1 +1,61 @@
-<p>manage-sales works!</p>
+<div class="card">
+    <p-table [value]="products" [tableStyle]="{'min-width': '60rem'}" *ngIf="!isDetailMode">
+        <ng-template pTemplate="caption">
+            <div class="flex align-items-center justify-content-between">
+                Products
+                <p-button icon="pi pi-refresh"></p-button>
+            </div>
+        </ng-template>
+        <ng-template pTemplate="header">
+            <tr>
+                <th>Name</th>
+                <th>Image</th>
+                <th>Price</th>
+                <th>Category</th>
+                <th>Reviews</th>
+                <th>Status</th>
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-product>
+            <tr>
+                <td>{{product.name}}</td>
+                <td><img [src]="'https://primefaces.org/cdn/primeng/images/demo/product/' + product.image"
+                        [alt]="product.name" width="100" class="shadow-4" /></td>
+                <td>{{product.price | currency:'NGN'}}</td>
+                <td>{{product.category}}</td>
+                <td><p-rating [ngModel]="product.rating" [readonly]="true" [cancel]="false"></p-rating></td>
+                <td><button pButton pRipple label="Detail" icon="pi pi-eye" class="p-button-outlined-primary" (click)="gotoDetail(product)"></button></td>
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="summary">
+            <div class="flex align-items-center justify-content-between">
+                In total there are {{products ? products.length : 0 }} products.
+            </div>
+        </ng-template>
+    </p-table>
+
+    
+    
+    <div class="card" *ngIf="isDetailMode">
+        <div class="grid" >
+    
+            <div class="col-10 md:col-4 mb-4 px-5">
+    
+                <div class="text-700 mb-1 font-medium text-blue"><i class="pi pi-user mr-1"></i>Product Id:</div>
+                <span class="text-900 line-height-3">{{product.id}}</span>
+            </div>
+            <div class="col-10 md:col-4 mb-4 px-5">
+                <div class="text-700 mb-1 font-medium text-white"><i class="pi pi-phone mr-1"></i>Product Name:</div>
+                <span class="text-900 line-height-3">{{product.name}}</span>
+            </div>
+
+            <div class="col-10 md:col-4 mb-4 px-5">
+                <div class="text-700 mb-1 font-medium text-blue"><i class="pi pi-phone mr-1"></i>Product Price:</div>
+                <span class="text-900 line-height-3">{{product.price}}</span>
+            </div>
+    
+        </div>
+    
+    </div>
+
+</div>

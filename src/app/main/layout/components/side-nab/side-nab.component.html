@@ -1,20 +1,26 @@
-<div class="sidenav" [ngClass]="collapsed ? 'sidenav-collapsed' : ''">
-    <div class="logo-container">
-        <button pButton pRipple class="logo" (click)="toggleSidebar()">
-            A
-        </button>
-        
-        <div class="log-text" *ngIf="collapsed">Centaur</div>
-        <button pButton pRipple class=" button-close mr-2">
-            <i class="sidenav-link-icon" class="pi pi-icon" (click)="closeSidebar()">x</i>
+<ng-container>
+    <div class="sidenav" [ngClass]="collapsed ? 'sidenav-collapsed' : ''" [ngClass]="darkMode ? 'darkSidebar' : ''">
+        <div class="logo-container">
+            <button pButton pRipple class="logo mr-2" (click)="toggleSidebar()">
+                A
             </button>
+    
+    
+    
+            <!-- <div class="log-text" @fadeInOut *ngIf="collapsed">Centaur</div> -->
+            <!-- <button pButton pRipple class=" button-close mr-2"> -->
+            <i class="sidenav-link-icon pi pi-moon ml-3" style="cursor: pointer;" (click)="changeMode()"
+                *ngIf="collapsed"></i>
+            <!-- </button> -->
+        </div>
+        <ul class="sidenav-nav">
+            <li class="sidenav-nav-item" *ngFor="let data of navData">
+                <a [routerLink]="data.routeLink" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"
+                    class="sidenav-nav-link">
+                    <i class="sidenav-link-icon" [class]="data.icon"></i>
+                    <span class="sidenav-link-text" @fadeInOut *ngIf="collapsed">{{data.label}}</span>
+                </a>
+            </li>
+        </ul>
     </div>
-    <ul class="sidenav-nav">
-        <li class="sidenav-nav-item" *ngFor="let data of navData">
-            <a [routerLink]="data.routeLink" class="sidenav-nav-link">
-                <i class="sidenav-link-icon" [class]="data.icon"></i>
-                <span class="sidenav-link-text" *ngIf="collapse">{{data.label}}</span>
-            </a>
-        </li>
-    </ul>
-</div>
+</ng-container>
