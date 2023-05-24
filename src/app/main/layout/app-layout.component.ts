@@ -11,7 +11,7 @@ import { SidebarService } from './api/services/sidebar.service';
 @Injectable({ providedIn: 'root' })
 export class AppLayoutComponent implements OnInit {
   title = 'Centaur';
-  screenWidth = 0;
+  screenWidth = null;
   isCollapsed = null;
   darkMode = false;
 
