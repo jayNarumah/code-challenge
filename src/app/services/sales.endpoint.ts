@@ -7,7 +7,7 @@ import { Product } from '../domain/product';
     providedIn: 'root'
 })
 export class ProductService {
-    baseUrl = ' http://localhost:3000/data';
+    baseUrl = ' http://localhost:3000/sales';
 
     constructor(private http: HttpClient) { }
 
@@ -16,7 +16,7 @@ export class ProductService {
     }
 
     getById(id: string) {
-        return this.http.get<{ data: Product }>(`${this.baseUrl}?code=${id}`);
+        return this.http.get<{ data: Product }>(`${this.baseUrl}?/${id}`);
     }
 
     create(product: Product) {

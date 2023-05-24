@@ -1,4 +1,9 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild, ElementRef } from '@angular/core';
+import html2canvas from 'html2canvas';
+import { jsPDF } from "jspdf";
+import jspdf from 'jspdf';
+import 'jspdf-autotable';
+import "jspdf-autotable";
 import { ConfirmationService, MessageService } from 'primeng/api';
 import { Product } from 'src/app/domain/product';
 import { ProductService } from 'src/app/services/productservice';
@@ -9,12 +14,12 @@ import { ProductService } from 'src/app/services/productservice';
   styleUrls: ['./manage-items.component.css']
 })
 export class ManageItemsComponent {
-
   productDialog: boolean;
 
   products: Product[];
 
   product: Product;
+  tableRows = 10;
 
   selectedProducts: Product[];
   isUpdateMode = false;
@@ -147,5 +152,30 @@ export class ManageItemsComponent {
       id += chars.charAt(Math.floor(Math.random() * chars.length));
     }
     return id;
+  }
+
+  download() {
+    this.tableRows = 10000;
+    let data = document.getElementById('content');
+    html2canvas(data).then((canvas) => {
+      let fileWidth = 208;
+      let fileHeight =
+        (canvas.height * fileWidth) /
+        canvas.width;
+      const FILEURI =
+        canvas.toDataURL('image/png');
+      let PDF = new jspdf('p', 'mm', 'a4');
+      let position = 0;
+      PDF.addImage(
+        FILEURI,
+        'PNG',
+        0,
+        position,
+        fileWidth,
+        fileHeight
+      );
+      PDF.save('angular-demo.pdf');
+      this.tableRows = 10;
+    });
   }
 }

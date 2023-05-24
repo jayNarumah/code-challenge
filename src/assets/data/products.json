@@ -367,5 +367,11 @@
       "image": "product-placeholder.svg",
       "code": "QGzm5"
     }
+  ],
+  "sales": [
+    {
+      "id": "1",
+      "itemId": "1010"
+    }
   ]
 }
