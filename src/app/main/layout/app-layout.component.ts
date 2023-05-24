@@ -35,7 +35,6 @@ export class AppLayoutComponent implements OnInit {
     this.sidebarService.isCollapsed().subscribe({
       next: (response) => {
         this.isCollapsed = response;
-        console.log('Body', this.isCollapsed)
       }
     });
 

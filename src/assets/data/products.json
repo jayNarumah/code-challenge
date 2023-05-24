@@ -61,18 +61,6 @@
       "rating": 4
     },
     {
-      "id": "1009",
-      "code": "cm230f032",
-      "name": "Gaming Set",
-      "description": "Product Description",
-      "image": "gaming-set.jpg",
-      "price": 29900,
-      "category": "Electronics",
-      "quantity": 63,
-      "inventoryStatus": "INSTOCK",
-      "rating": 3
-    },
-    {
       "id": "1010",
       "code": "plb34234v",
       "name": "Gold Phone Case",
@@ -366,6 +354,17 @@
       "id": "135",
       "image": "product-placeholder.svg",
       "code": "QGzm5"
+    },
+    {
+      "name": "Abdouljawad Ibrahim",
+      "description": "asas",
+      "inventoryStatus": "instock",
+      "category": "Accessories",
+      "price": 11,
+      "quantity": 11,
+      "id": "531",
+      "image": "product-placeholder.svg",
+      "code": "e5JGw"
     }
   ],
   "sales": [
