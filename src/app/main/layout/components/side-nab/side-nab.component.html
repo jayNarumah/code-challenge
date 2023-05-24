@@ -1,12 +1,11 @@
 <ng-container>
     <div class="sidenav" [ngClass]="collapsed ? 'sidenav-collapsed' : ''" [ngClass]="darkMode ? 'darkSidebar' : ''">
         <div class="logo-container">
-            <button pButton pRipple class="logo mr-2" (click)="toggleSidebar()">
+            <button pButton pRipple class="logo mr-" (click)="toggleSidebar()">
                 A
             </button>
-    
-    
-    
+            &nbsp; &nbsp;
+            
             <!-- <div class="log-text" @fadeInOut *ngIf="collapsed">Centaur</div> -->
             <!-- <button pButton pRipple class=" button-close mr-2"> -->
             <i class="sidenav-link-icon pi pi-moon ml-3" style="cursor: pointer;" (click)="changeMode()"

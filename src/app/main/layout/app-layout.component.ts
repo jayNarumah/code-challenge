@@ -11,7 +11,7 @@ import { SidebarService } from './api/services/sidebar.service';
 @Injectable({ providedIn: 'root' })
 export class AppLayoutComponent implements OnInit {
   title = 'Centaur';
-  screenWidth = 0;
+  screenWidth = null;
   isCollapsed = null;
   darkMode = false;
 
@@ -35,7 +35,6 @@ export class AppLayoutComponent implements OnInit {
     this.sidebarService.isCollapsed().subscribe({
       next: (response) => {
         this.isCollapsed = response;
-        console.log('Body', this.isCollapsed)
       }
     });
 

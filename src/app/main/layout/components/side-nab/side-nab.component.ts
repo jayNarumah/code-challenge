@@ -33,15 +33,14 @@ import { trigger, transition, style, animate } from '@angular/animations';
 export class SideNabComponent implements OnInit {
   darkMode: boolean;
   @Output() onSidebarToggle: EventEmitter<ScreenToggle> = new EventEmitter();
-  // @HostListener('window:resize', ['$event']) onResize(data: any) {
-  //   this.screenWidth = window.innerWidth;
+  @HostListener('window:resize', ['$event']) onResize(data: any) {
+    this.screenWidth = window.innerWidth;
 
-  //   if (this.screenWidth <= 768) {
-  //     this.collapsed = false;
-
-  //   this.sidebarService.setWidth(this.screenWidth);
-  //   }
-  // }
+    if (this.screenWidth <= 768) {
+      this.collapsed = false;
+      this.sidebarService.setWidth(this.screenWidth);
+    }
+  }
   collapsed = null;
   screenWidth = 0;
 

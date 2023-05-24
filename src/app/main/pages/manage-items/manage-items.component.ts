@@ -49,7 +49,7 @@ export class ManageItemsComponent {
     this.submitted = false;
     this.isUpdateMode = false;
     this.productDialog = true;
-    console.log('New')
+    console.log(this.isUpdateMode)
   }
 
   deleteSelectedProducts() {
@@ -103,7 +103,6 @@ export class ManageItemsComponent {
 
   saveProduct() {
     this.submitted = true;
-    this.isUpdateMode = false;
 
     if (this.product.name.trim) {
       if (this.isUpdateMode) {
@@ -115,8 +114,8 @@ export class ManageItemsComponent {
         });
       }
       else {
-        const length = this.products.length;
-        this.product.id = (length + 101).toString();
+        const length = this.products.length + 1;
+        this.product.id = (length + 500).toString();
         this.product.image = 'product-placeholder.svg';
         this.product.code = this.createId();
         this.productService.create(this.product).subscribe({
@@ -130,6 +129,8 @@ export class ManageItemsComponent {
       this.products = [...this.products];
       this.productDialog = false;
       this.product = {};
+
+      this.isUpdateMode = false;
     }
   }
 
