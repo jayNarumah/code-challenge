@@ -1,0 +1,13 @@
+<div class="layout-wrapper" >
+  <!-- <div class="layout-sidebar">
+    <app-sidebar></app-sidebar>
+  </div> -->
+  <div class="layout-main-container">
+    <div class="layout-main" [ngClass]="isCollapsed && screenWidth > 768 ? 'body-trimmed' : 'body-md-screen'">
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+  <div class="layout-mask"></div>
+</div>
+
+<app-side-nab (onSidebarToggle)="sidenabToggle($event)"></app-side-nab>

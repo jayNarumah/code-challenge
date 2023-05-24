@@ -14,9 +14,19 @@ import { DropdownModule } from 'primeng/dropdown';
 import { RadioButtonModule } from 'primeng/radiobutton';
 import { RatingModule } from 'primeng/rating';
 import { ToolbarModule } from 'primeng/toolbar';
-import { ConfirmationService } from 'primeng/api';
+import { ConfirmationService, MessageService } from 'primeng/api';
 
 import { AppComponent } from './app.component';
+import { PrimeNgUiModule } from './primeng-ui/primeng-ui.module';
+import { AppLayoutModule } from './main/layout/app-layout.module';
+import { RouterModule, Routes } from '@angular/router';
+
+const routes: Routes = [
+    {
+        path: '',
+        loadChildren: () => import('./main/main.module').then(m => m.MainModules),
+    }
+];
 
 @NgModule({
     declarations: [
@@ -25,21 +35,13 @@ import { AppComponent } from './app.component';
     imports: [
         BrowserModule,
         BrowserAnimationsModule,
-        FormsModule,
-        TableModule,
+        RouterModule.forRoot(routes),
         HttpClientModule,
-        InputTextModule,
-        DialogModule,
-        ToolbarModule,
-        ConfirmDialogModule,
-        RatingModule,
-        InputNumberModule,
-        InputTextareaModule,
-        RadioButtonModule,
-        DropdownModule,
-        ButtonModule
+        FormsModule,
+        PrimeNgUiModule,
+        AppLayoutModule
     ],
-    providers: [ConfirmationService],
+    providers: [ConfirmationService, MessageService],
     bootstrap: [AppComponent]
 })
 export class AppModule { }
