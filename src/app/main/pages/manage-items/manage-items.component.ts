@@ -1,6 +1,5 @@
-import { Component, ViewChild, ElementRef } from '@angular/core';
+import { Component } from '@angular/core';
 import html2canvas from 'html2canvas';
-import { jsPDF } from "jspdf";
 import jspdf from 'jspdf';
 import 'jspdf-autotable';
 import "jspdf-autotable";
@@ -160,22 +159,13 @@ export class ManageItemsComponent {
     let data = document.getElementById('content');
     html2canvas(data).then((canvas) => {
       let fileWidth = 208;
-      let fileHeight =
-        (canvas.height * fileWidth) /
-        canvas.width;
-      const FILEURI =
-        canvas.toDataURL('image/png');
+      let fileHeight = (canvas.height * fileWidth) / canvas.width;
+      const FILEURI = canvas.toDataURL('image/png');
       let PDF = new jspdf('p', 'mm', 'a4');
       let position = 0;
-      PDF.addImage(
-        FILEURI,
-        'PNG',
-        0,
-        position,
-        fileWidth,
-        fileHeight
-      );
-      PDF.save('angular-demo.pdf');
+      PDF.addImage(FILEURI, 'PNG', 0, position, fileWidth, fileHeight);
+      const pdfName = 'report' + new Date() + '.pdf'
+      PDF.save(pdfName);
       this.tableRows = 10;
     });
   }
