@@ -3,18 +3,12 @@ import { BehaviorSubject } from 'rxjs';
 
 @Injectable({ providedIn: 'root' })
 export class SidebarService implements OnInit {
-    screenWidth$ = new BehaviorSubject(0);
     isDarkMode$ = new BehaviorSubject(null);
     isCollapsed$ = new BehaviorSubject(false);
 
     constructor() { }
     ngOnInit(): void {
 
-    }
-
-    setWidth(width: number) {
-        this.screenWidth$.next(width);
-        localStorage.setItem('code_challenge_width', JSON.stringify(width));
     }
 
     getMode() {
@@ -37,13 +31,5 @@ export class SidebarService implements OnInit {
         }
         return this.isCollapsed$;
 
-    }
-
-    getWidth() {
-        const width = localStorage.getItem('code_challenge_width');
-        if (width) {
-            this.screenWidth$.next(JSON.parse(width));
-        }
-        return this.screenWidth$;
     }
 }

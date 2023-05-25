@@ -38,7 +38,6 @@ export class SideNabComponent implements OnInit {
 
     if (this.screenWidth <= 768) {
       this.collapsed = false;
-      this.sidebarService.setWidth(this.screenWidth);
     }
   }
   collapsed = null;
@@ -61,7 +60,6 @@ export class SideNabComponent implements OnInit {
 
   ngOnInit(): void {
     this.screenWidth = window.innerWidth;
-    this.sidebarService.setWidth(this.screenWidth);
     this.sidebarService.getMode().subscribe({
       next: (response) => {
         this.darkMode = response;
@@ -71,6 +69,9 @@ export class SideNabComponent implements OnInit {
     this.sidebarService.isCollapsed().subscribe({
       next: (response) => {
         this.collapsed = response;
+        if (this.collapsed & this.screenWidth) {
+          this.onSidebarToggle.emit({ collapsed: this.collapsed, screenWidth: this.screenWidth });
+        }
       }
     })
   }
@@ -79,9 +80,8 @@ export class SideNabComponent implements OnInit {
     console.log('Sidebar Toggle ... ');
     this.collapsed = !this.collapsed;
     this.sidebarService.setCollapsibe(this.collapsed);
-    this.sidebarService.setWidth(this.screenWidth)
 
-    // this.onSidebarToggle.emit({ collapsed: this.collapsed, screenWidth: this.screenWidth });
+    this.onSidebarToggle.emit({ collapsed: this.collapsed, screenWidth: this.screenWidth });
   }
   changeMode() {
     console.log('Mode Change ..')

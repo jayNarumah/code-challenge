@@ -8,7 +8,6 @@ import { SidebarService } from './api/services/sidebar.service';
   styleUrls: ['./app-layout.component.scss']
 })
 
-@Injectable({ providedIn: 'root' })
 export class AppLayoutComponent implements OnInit {
   title = 'Centaur';
   screenWidth = null;
@@ -20,12 +19,6 @@ export class AppLayoutComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.sidebarService.getWidth().subscribe({
-      next: (response) => {
-        this.screenWidth = response;
-      }
-    });
-
     this.sidebarService.getMode().subscribe({
       next: (response) => {
         this.darkMode = response;
@@ -38,5 +31,10 @@ export class AppLayoutComponent implements OnInit {
       }
     });
 
+  }
+
+  onCollapse(data: ScreenToggle) {
+    this.isCollapsed = data.collapsed;
+    this.screenWidth = data.screenWidth;
   }
 }
