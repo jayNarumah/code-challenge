@@ -1,3 +1,6 @@
 <!-- <app-layout></app-layout> -->
-<p-toast></p-toast>
+<div style="width: 100%;" [ngClass]="darkMode? 'bodyDark': 'bodyLight'">
+    <p-toast></p-toast>
 <router-outlet></router-outlet>
+</div>
+

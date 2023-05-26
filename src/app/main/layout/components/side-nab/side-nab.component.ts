@@ -31,6 +31,7 @@ import { trigger, transition, style, animate } from '@angular/animations';
 })
 export class SideNabComponent implements OnInit {
   darkMode: boolean;
+
   @Output() onSidebarToggle: EventEmitter<boolean> = new EventEmitter();
   @HostListener('window:resize', ['$event']) onResize(data: any) {
     this.screenWidth = window.innerWidth;

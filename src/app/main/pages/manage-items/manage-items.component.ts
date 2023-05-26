@@ -1,11 +1,10 @@
 import { Component } from '@angular/core';
-import html2canvas from 'html2canvas';
-import jspdf from 'jspdf';
 import 'jspdf-autotable';
 import "jspdf-autotable";
 import { ConfirmationService, MessageService } from 'primeng/api';
 import { Product } from 'src/app/domain/product';
 import { ProductService } from 'src/app/services/productservice';
+import { PdfService } from '../../layout/api/services/pdf.service';
 
 @Component({
   selector: 'app-manage-items',
@@ -27,7 +26,11 @@ export class ManageItemsComponent {
 
   statuses: any[];
 
-  constructor(private productService: ProductService, private messageService: MessageService, private confirmationService: ConfirmationService) { }
+  constructor(
+    private pdfService: PdfService,
+    private productService: ProductService,
+    private messageService: MessageService,
+    private confirmationService: ConfirmationService) { }
 
   ngOnInit() {
     this.productService.getProducts().subscribe({
@@ -126,6 +129,12 @@ export class ManageItemsComponent {
       else {
         const length = this.products.length + 1;
         this.product.id = (length + 500).toString();
+        const found = this.products.find((item) => item.id == this.product.id);
+
+        if (found) {
+          this.saveProduct();
+        }
+
         this.product.image = 'product-placeholder.svg';
         this.product.code = this.createId();
         this.productService.create(this.product).subscribe({
@@ -137,7 +146,7 @@ export class ManageItemsComponent {
             this.messageService.add({ severity: 'error', summary: 'Oops !!!', detail: 'Error occurred', life: 3000 });
           }
         });
-
+        this.isUpdateMode = false;
       }
 
       this.products = [...this.products];
@@ -170,18 +179,6 @@ export class ManageItemsComponent {
   }
 
   download() {
-    this.tableRows = 10000;
-    let data = document.getElementById('content');
-    html2canvas(data).then((canvas) => {
-      let fileWidth = 208;
-      let fileHeight = (canvas.height * fileWidth) / canvas.width;
-      const FILEURI = canvas.toDataURL('image/png');
-      let PDF = new jspdf('p', 'mm', 'a4');
-      let position = 0;
-      PDF.addImage(FILEURI, 'PNG', 0, position, fileWidth, fileHeight);
-      const pdfName = 'report' + new Date() + '.pdf'
-      PDF.save(pdfName);
-      this.tableRows = 10;
-    });
+    this.pdfService.downloadPdf();
   }
 }

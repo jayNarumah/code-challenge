@@ -1,18 +1,6 @@
 {
   "data": [
     {
-      "id": "1003",
-      "code": "244wgerg2",
-      "name": "Blue T-Shirt",
-      "description": "Product Description",
-      "image": "blue-t-shirt.jpg",
-      "price": 2900,
-      "category": "Clothing",
-      "quantity": 18,
-      "inventoryStatus": "INSTOCK",
-      "rating": 5
-    },
-    {
       "id": "1005",
       "code": "av2231fwg",
       "name": "Brown Purse",
@@ -70,18 +58,6 @@
       "category": "Accessories",
       "quantity": 0,
       "inventoryStatus": "OUTOFSTOCK",
-      "rating": 4
-    },
-    {
-      "id": "1011",
-      "code": "4920nnc2d",
-      "name": "Green Earbuds",
-      "description": "Product Description",
-      "image": "green-earbuds.jpg",
-      "price": 8900,
-      "category": "Electronics",
-      "quantity": 23,
-      "inventoryStatus": "INSTOCK",
       "rating": 4
     },
     {
@@ -354,17 +330,6 @@
       "id": "135",
       "image": "product-placeholder.svg",
       "code": "QGzm5"
-    },
-    {
-      "name": "Abdouljawad Ibrahim",
-      "description": "asas",
-      "inventoryStatus": "instock",
-      "category": "Accessories",
-      "price": 11,
-      "quantity": 11,
-      "id": "531",
-      "image": "product-placeholder.svg",
-      "code": "e5JGw"
     }
   ],
   "sales": [
@@ -391,6 +356,26 @@
       "id": "2023-05-25T22:33:24.659Z",
       "productId": "1007",
       "quantity": 5
+    },
+    {
+      "id": "2023-05-26T03:50:16.908Z",
+      "productId": "1003",
+      "quantity": 41111111
+    },
+    {
+      "id": "2023-05-26T04:27:32.374Z",
+      "productId": "1003",
+      "quantity": 41111111
+    },
+    {
+      "id": "2023-05-26T04:27:33.571Z",
+      "productId": "1003",
+      "quantity": 41111111
+    },
+    {
+      "id": "2023-05-26T04:27:34.775Z",
+      "productId": "1003",
+      "quantity": 41111111
     }
   ]
 }
