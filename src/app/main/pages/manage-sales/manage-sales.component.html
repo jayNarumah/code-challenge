@@ -22,8 +22,9 @@
                             </div>
                             <div class="flex sm:flex-column align-items-center sm:align-items-end gap-3 sm:gap-2">
                                 <span class="text-2xl font-semibold">{{ product.price | currency: 'NGN' }}</span>
-                                <button pButton icon="pi pi-shopping-cart" (click)="gotoDetail(product)" class="md:align-self-end mb-2 p-button-rounded"
+                                <button pButton icon="pi pi-shopping-cart" (click)="gotoDetail(product.id)" class="md:align-self-end mb-2 p-button-rounded"
                                     [disabled]="product.inventoryStatus === 'OUTOFSTOCK'"></button>
+                                    <i-feather name="menu" class="someclass"></i-feather>
                             </div>
                         </div>
                     </div>

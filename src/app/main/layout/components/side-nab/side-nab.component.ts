@@ -1,5 +1,4 @@
 import { Component, EventEmitter, HostListener, Input, OnInit, Output } from '@angular/core';
-import { ScreenToggle } from "../../api/models/toggle-sidebar.model";
 import { SidebarService } from '../../api/services/sidebar.service';
 import { trigger, transition, style, animate } from '@angular/animations';
 
@@ -32,7 +31,7 @@ import { trigger, transition, style, animate } from '@angular/animations';
 })
 export class SideNabComponent implements OnInit {
   darkMode: boolean;
-  @Output() onSidebarToggle: EventEmitter<ScreenToggle> = new EventEmitter();
+  @Output() onSidebarToggle: EventEmitter<boolean> = new EventEmitter();
   @HostListener('window:resize', ['$event']) onResize(data: any) {
     this.screenWidth = window.innerWidth;
 
@@ -68,23 +67,21 @@ export class SideNabComponent implements OnInit {
 
     this.sidebarService.isCollapsed().subscribe({
       next: (response) => {
-        this.collapsed = response;
-        if (this.collapsed & this.screenWidth) {
-          this.onSidebarToggle.emit({ collapsed: this.collapsed, screenWidth: this.screenWidth });
+        if (response) {
+          this.collapsed = response;
+          // console.log('OnInt', this.toggleSidebar)
         }
       }
     })
   }
 
   toggleSidebar() {
-    console.log('Sidebar Toggle ... ');
     this.collapsed = !this.collapsed;
     this.sidebarService.setCollapsibe(this.collapsed);
-
-    this.onSidebarToggle.emit({ collapsed: this.collapsed, screenWidth: this.screenWidth });
+    console.log(this.collapsed)
+    this.onSidebarToggle.emit(this.collapsed);
   }
   changeMode() {
-    console.log('Mode Change ..')
     this.darkMode = !this.darkMode;
     this.sidebarService.setMode(this.darkMode);
   }

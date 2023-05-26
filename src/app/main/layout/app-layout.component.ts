@@ -19,6 +19,8 @@ export class AppLayoutComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.screenWidth = window.innerWidth;
+
     this.sidebarService.getMode().subscribe({
       next: (response) => {
         this.darkMode = response;
@@ -33,8 +35,7 @@ export class AppLayoutComponent implements OnInit {
 
   }
 
-  onCollapse(data: ScreenToggle) {
-    this.isCollapsed = data.collapsed;
-    this.screenWidth = data.screenWidth;
+  onCollapse(data: boolean) {
+    this.isCollapsed = data;
   }
 }

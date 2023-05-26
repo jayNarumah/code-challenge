@@ -19,7 +19,7 @@ import { MenubarModule } from 'primeng/menubar';
 import { SidebarModule } from 'primeng/sidebar';
 import { ToastModule } from 'primeng/toast';
 import { ImageModule } from 'primeng/image';
-import { DataViewModule, DataViewLayoutOptions } from 'primeng/dataview';
+import { DataViewModule } from 'primeng/dataview';
 
 const modules = [
     TableModule,

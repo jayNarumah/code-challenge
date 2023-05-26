@@ -1,3 +1,13 @@
+::root {
+    --background-color: #006d77;
+    --background: #000000;
+    --sidebar-background: #ededed;
+}
+
+.sbar {
+    background-color: var(--background);
+}
+
 .body {
     width: calc(100% - 5rem);
     height: 100vh;
@@ -8,6 +18,7 @@
     transition: all .5s ease;
     background: transparent;
     padding: 3rem;
+    background: var(--background);
 }
 
 .body-trimmed {
