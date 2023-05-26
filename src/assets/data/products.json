@@ -20,7 +20,7 @@
       "image": "chakra-bracelet.jpg",
       "price": 3200,
       "category": "Accessories",
-      "quantity": 1,
+      "quantity": null,
       "inventoryStatus": "LOWSTOCK",
       "rating": 3
     },
@@ -32,7 +32,7 @@
       "image": "galaxy-earrings.jpg",
       "price": 3400,
       "category": "Accessories",
-      "quantity": 18,
+      "quantity": 17,
       "inventoryStatus": "INSTOCK",
       "rating": 5
     },
@@ -44,7 +44,7 @@
       "image": "game-controller.jpg",
       "price": 9900,
       "category": "Electronics",
-      "quantity": 0,
+      "quantity": -2,
       "inventoryStatus": "LOWSTOCK",
       "rating": 4
     },
@@ -68,7 +68,7 @@
       "image": "green-t-shirt.jpg",
       "price": 4900,
       "category": "Clothing",
-      "quantity": 74,
+      "quantity": 68,
       "inventoryStatus": "INSTOCK",
       "rating": 5
     },
@@ -152,7 +152,7 @@
       "image": "pink-band.jpg",
       "price": 7900,
       "category": "Fitness",
-      "quantity": 63,
+      "quantity": 60,
       "inventoryStatus": "INSTOCK",
       "rating": 4
     },
@@ -248,7 +248,7 @@
       "image": "yellow-earbuds.jpg",
       "price": 8900,
       "category": "Electronics",
-      "quantity": 35,
+      "quantity": 34,
       "inventoryStatus": "INSTOCK",
       "rating": 3
     },
@@ -335,62 +335,15 @@
   "sales": [
     {
       "id": "1",
-      "itemId": "1010"
+      "productId": "135",
+      "quantity": "2",
+      "amount": "1200"
     },
     {
-      "id": "2023-05-25T22:23:32.711Z",
-      "productId": "1003",
-      "quantity": 11
-    },
-    {
-      "id": "2023-05-25T22:24:32.916Z",
-      "productId": "1003",
-      "quantity": 3
-    },
-    {
-      "id": "2023-05-25T22:26:43.060Z",
-      "productId": "1003",
-      "quantity": 4
-    },
-    {
-      "id": "2023-05-25T22:33:24.659Z",
-      "productId": "1007",
-      "quantity": 5
-    },
-    {
-      "id": "2023-05-26T03:50:16.908Z",
-      "productId": "1003",
-      "quantity": 41111111
-    },
-    {
-      "id": "2023-05-26T04:27:32.374Z",
-      "productId": "1003",
-      "quantity": 41111111
-    },
-    {
-      "id": "2023-05-26T04:27:33.571Z",
-      "productId": "1003",
-      "quantity": 41111111
-    },
-    {
-      "id": "2023-05-26T04:27:34.775Z",
-      "productId": "1003",
-      "quantity": 41111111
-    },
-    {
-      "id": "2023-05-26T10:57:23.794Z",
-      "productId": "1006",
-      "quantity": 11
-    },
-    {
-      "id": "2023-05-26T10:57:40.936Z",
-      "productId": "1006",
-      "quantity": null
-    },
-    {
-      "id": "2023-05-26T12:08:33.962Z",
-      "productId": "1006",
-      "quantity": 4
+      "id": "Fri May 26 2023 21:25:25 GMT+0100 (West Africa Standard Time)",
+      "productId": "1012",
+      "quantity": 68,
+      "amount": 333200
     }
   ]
 }

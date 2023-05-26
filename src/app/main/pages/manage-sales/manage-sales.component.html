@@ -1,9 +1,7 @@
-<div class="px-8" id="content">
+<div class="px-8"style="height: 100" id="content">
     <p-toolbar styleClass="mb-4">
         <ng-template pTemplate="left">
-            <button pButton pRipple label="Manage Items" icon="pi pi-arrow-left" class="p-button-success mr-2"
-            ></button>
-            <button pButton pRipple label="Sales Record"  class="p-button-outlined"
+            <button pButton pRipple [label]="canShowSalesRecord ? 'Back to Shop' : 'View Sales'"  class="p-button-outlined"
              (click)="toggleTable()"></button>
         </ng-template>
     
@@ -11,8 +9,8 @@
             <button pButton pRipple label="Export" icon="pi pi-upload" (click)="download()" class="p-button-help" *ngIf="canShowSalesRecord"></button>
         </ng-template>
     </p-toolbar>
-    <div class="content">
-        <p-dataView #dv [value]="products" [rows]="10" [paginator]="true" class="px-8" *ngIf="!canShowSalesRecord">
+    <div class="content table-container">
+        <p-dataView @fadeIn #dv [value]="products" [rows]="7" [paginator]="true" class="px-8" *ngIf="!canShowSalesRecord">
             <ng-template let-product pTemplate="listItem">
                 <div class="col-12">
                     <div class="flex flex-column xl:flex-row xl:align-items-start p-4 gap-4">
@@ -35,7 +33,7 @@
                             <div class="flex sm:flex-column align-items-center sm:align-items-end gap-3 sm:gap-2">
                                 <span class="text-2xl font-semibold">{{ product.price | currency: 'NGN' }}</span>
                                 <button pButton icon="pi pi-shopping-cart" (click)="gotoDetail(product.id)" class="md:align-self-end mb-2 p-button-rounded"
-                                    [disabled]="product.inventoryStatus === 'OUTOFSTOCK'"></button>
+                                    [disabled]="product.inventoryStatus === 'OUTOFSTOCK' || product.quantity < 1"></button>
                             </div>
                         </div>
                     </div>
@@ -53,20 +51,18 @@
             </ng-template>
             <ng-template pTemplate="header">
                 <tr>
-                    <th pSortableColumn="name">Name <p-sortIcon field="name"></p-sortIcon></th>
+                    <th pSortableColumn="name">Item Name <p-sortIcon field="name"></p-sortIcon></th>
                     <th pSortableColumn="price">Amount <p-sortIcon field="price"></p-sortIcon></th>
                     <th pSortableColumn="category">Quantity </th>
-                    <th pSortableColumn="rating">Reviews <p-sortIcon field="rating"></p-sortIcon></th>
                     
                 </tr>
             </ng-template>
             <ng-template pTemplate="body" let-sale>
                 <tr>
                     <td>{{getItemName(sale.productId)}}</td>
-                    <td>{{sale.quantity | currency:'NGN'}}</td>
+                    <td>{{ sale.quantity }}</td>
                     <td>{{sale.id}}</td>
-                    <td><p-rating [ngModel]="sale.rating" [readonly]="true" [cancel]="false"></p-rating></td>
-                   
+                    
                 </tr>
             </ng-template>
             <ng-template pTemplate="summary">
