@@ -9,6 +9,8 @@ import { FormsModule } from "@angular/forms";
 import { MessageService } from "primeng/api";
 import { SideNabComponent } from "./layout/components/side-nab/side-nab.component";
 import { SaleDetailComponent } from "./pages/sale-detail/sale-detail.component";
+import { IconsModule } from "../primeng-ui/icons.module";
+import { ProductDetailResolver } from "./pages/resolvers/detail-page.resolver";
 const routes: Routes = [
     {
         path: '',
@@ -23,15 +25,16 @@ const routes: Routes = [
                 component: ManageSalesComponent
             },
             {
-                path: 'sale/datail/:id',
-                component: SaleDetailComponent
+                path: 'sales/detail/:id',
+                component: SaleDetailComponent,
+                resolve: { data: ProductDetailResolver }
             }
         ]
     }
 ]
 @NgModule({
     declarations: [ManageItemsComponent, ManageSalesComponent, SaleDetailComponent],
-    imports: [CommonModule, PrimeNgUiModule, RouterModule.forChild(routes), FormsModule],
+    imports: [CommonModule, PrimeNgUiModule, RouterModule.forChild(routes), FormsModule, IconsModule],
     providers: [MessageService]
 })
 

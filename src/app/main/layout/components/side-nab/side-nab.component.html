@@ -1,5 +1,5 @@
 <ng-container>
-    <div class="sidenav" [ngClass]="collapsed ? 'sidenav-collapsed' : ''" [ngClass]="darkMode ? 'darkSidebar' : ''">
+    <div class="sidenav" [ngStyle]="{'width': collapsed ? '15.5625rem': ''}" [ngClass]="darkMode ? 'dark' : 'light'">
         <div class="logo-container">
             <button pButton pRipple class="logo mr-" (click)="toggleSidebar()">
                 A
@@ -10,7 +10,7 @@
             <!-- <button pButton pRipple class=" button-close mr-2"> -->
             <i class="sidenav-link-icon pi pi-moon ml-3" style="cursor: pointer;" (click)="changeMode()"
                 *ngIf="collapsed"></i>
-            <!-- </button> -->
+                
         </div>
         <ul class="sidenav-nav">
             <li class="sidenav-nav-item" *ngFor="let data of navData">

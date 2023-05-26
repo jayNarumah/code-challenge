@@ -4,11 +4,10 @@ import { BehaviorSubject } from 'rxjs';
 @Injectable({ providedIn: 'root' })
 export class SidebarService implements OnInit {
     isDarkMode$ = new BehaviorSubject(null);
-    isCollapsed$ = new BehaviorSubject(false);
+    isCollapsed$ = new BehaviorSubject(null);
 
     constructor() { }
     ngOnInit(): void {
-
     }
 
     getMode() {
@@ -27,9 +26,10 @@ export class SidebarService implements OnInit {
     isCollapsed() {
         const is_collapse = localStorage.getItem('code_challenge_is_collapsed');
         if (is_collapse) {
+            console.log("🚀 ~ file: sidebar.service.ts:29 ~ SidebarService ~ isCollapsed ~ is_collapse:", JSON.parse(is_collapse))
             this.isCollapsed$.next(JSON.parse(is_collapse));
+            console.log('jsn', JSON.parse(is_collapse))
         }
         return this.isCollapsed$;
-
     }
 }

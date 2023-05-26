@@ -33,6 +33,9 @@ export class ManageItemsComponent {
     this.productService.getProducts().subscribe({
       next: (resp) => {
         this.products = resp;
+      },
+      error: () => {
+        this.messageService.add({ severity: 'error', summary: 'Oops !!!', detail: 'Error occurred', life: 3000 });
       }
     });
 
@@ -48,7 +51,6 @@ export class ManageItemsComponent {
     this.submitted = false;
     this.isUpdateMode = false;
     this.productDialog = true;
-    console.log(this.isUpdateMode)
   }
 
   deleteSelectedProducts() {
@@ -59,7 +61,10 @@ export class ManageItemsComponent {
       accept: () => {
         this.selectedProducts.forEach((currentValue) => {
           this.productService.delete(currentValue.id).subscribe({
-            next: (response) => { }
+            next: (response) => { },
+            error: () => {
+              this.messageService.add({ severity: 'error', summary: 'Oops !!!', detail: 'Error occurred', life: 3000 });
+            }
           })
         });
 
@@ -87,6 +92,9 @@ export class ManageItemsComponent {
           next: (response) => {
             console.log(response)
           },
+          error: () => {
+            this.messageService.add({ severity: 'error', summary: 'Oops !!!', detail: 'Error occurred', life: 3000 });
+          }
         });
         this.products = this.products.filter(val => val.id !== product.id);
         this.product = {};
@@ -109,6 +117,9 @@ export class ManageItemsComponent {
           next: (resp) => {
             this.products[this.findIndexById(this.product.id)] = this.product;
             this.messageService.add({ severity: 'success', summary: 'Successful', detail: 'Product Updated', life: 3000 });
+          },
+          error: () => {
+            this.messageService.add({ severity: 'error', summary: 'Oops !!!', detail: 'Error occurred', life: 3000 });
           }
         });
       }
@@ -120,9 +131,13 @@ export class ManageItemsComponent {
         this.productService.create(this.product).subscribe({
           next: (response) => {
             this.products.push(response);
+            this.messageService.add({ severity: 'success', summary: 'Successful', detail: 'Product Created', life: 3000 });
+          },
+          error: () => {
+            this.messageService.add({ severity: 'error', summary: 'Oops !!!', detail: 'Error occurred', life: 3000 });
           }
         });
-        this.messageService.add({ severity: 'success', summary: 'Successful', detail: 'Product Created', life: 3000 });
+
       }
 
       this.products = [...this.products];

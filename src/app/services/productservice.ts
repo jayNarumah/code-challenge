@@ -2,12 +2,13 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
 import { Product } from '../domain/product';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
     providedIn: 'root'
 })
 export class ProductService {
-    baseUrl = ' http://localhost:3000/data';
+    baseUrl = `${environment.apiUrl}/data`;
 
     constructor(private http: HttpClient) { }
 
@@ -16,15 +17,14 @@ export class ProductService {
     }
 
     getById(id: string) {
-        return this.http.get<{ data: Product }>(`${this.baseUrl}?code=${id}`);
+        return this.http.get<Product>(`${this.baseUrl}/${id}`);
     }
 
     create(product: Product) {
-        return this.http.post<any>(`${this.baseUrl}`, product);
+        return this.http.post<Product>(`${this.baseUrl}`, product);
     }
 
     update(id: string, productData: Product) {
-        console.log(id)
         return this.http.patch<Product>(`${this.baseUrl}/${id}`, productData);
     }
 

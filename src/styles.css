@@ -1,4 +1,9 @@
 /* You can add global styles to this file, and also import other style files */
+:root {
+    --background-color: #006d77;
+    --background: #000000;
+    --sidebar-background: #ededed;
+}
 
 * {
     margin: 0;
@@ -9,6 +14,7 @@
 body {
     position: relative;
     color: #ffffff;
+    background: var(--background-color);
     font-family: Georgia, 'Times New Roman', Times, serif;
 }
 

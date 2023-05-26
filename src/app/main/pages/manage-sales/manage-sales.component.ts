@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { MessageService } from 'primeng/api';
 import { Product } from 'src/app/domain/product';
 import { ProductService } from 'src/app/services/productservice';
 
@@ -13,19 +15,21 @@ export class ManageSalesComponent implements OnInit {
   product: Product;
   isDetailMode = false;
 
-  constructor(private productService: ProductService) { }
+  constructor(private productService: ProductService, private router: Router, private messageService: MessageService) { }
 
   ngOnInit() {
     this.productService.getProducts().subscribe({
       next: (resp) => {
         this.products = resp;
+      },
+      error: () => {
+        this.messageService.add({ severity: 'error', summary: 'Oops !!!', detail: 'Error occurred', life: 3000 });
       }
     });
   }
 
-  gotoDetail(data: Product) {
-    this.product = data;
-    this.isDetailMode = true;
+  gotoDetail(id: string) {
+    this.router.navigate(['/sales/detail', id]);
   }
 
   getSeverity(product) {

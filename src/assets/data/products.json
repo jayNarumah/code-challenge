@@ -8,7 +8,7 @@
       "image": "blue-t-shirt.jpg",
       "price": 2900,
       "category": "Clothing",
-      "quantity": 25,
+      "quantity": 18,
       "inventoryStatus": "INSTOCK",
       "rating": 5
     },
@@ -44,7 +44,7 @@
       "image": "galaxy-earrings.jpg",
       "price": 3400,
       "category": "Accessories",
-      "quantity": 23,
+      "quantity": 18,
       "inventoryStatus": "INSTOCK",
       "rating": 5
     },
@@ -371,6 +371,26 @@
     {
       "id": "1",
       "itemId": "1010"
+    },
+    {
+      "id": "2023-05-25T22:23:32.711Z",
+      "productId": "1003",
+      "quantity": 11
+    },
+    {
+      "id": "2023-05-25T22:24:32.916Z",
+      "productId": "1003",
+      "quantity": 3
+    },
+    {
+      "id": "2023-05-25T22:26:43.060Z",
+      "productId": "1003",
+      "quantity": 4
+    },
+    {
+      "id": "2023-05-25T22:33:24.659Z",
+      "productId": "1007",
+      "quantity": 5
     }
   ]
 }

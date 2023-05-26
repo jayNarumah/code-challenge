@@ -1,9 +1,9 @@
-<div class="layout-wrapper " [ngClass]="darkMode? 'darkBody' : ''">
+<div class="layout-wrapper " [ngClass]="darkMode? 'dark' : ''">
   <div class="layout-main-container">
-    <div class="layout-main" [ngClass]="!isCollapsed && screenWidth > 768 ? 'body-trimmed' : 'body-md-screen'">
+    <div class="layout-main" [ngClass]="!isCollapsed ? 'body-trimmed' : 'body-md-screen'">
       <router-outlet></router-outlet>
     </div>
   </div>
   <div class="layout-mask"></div>
 </div>
-<div class="darkSidebar"  (onSidebarToggle)="onCollapse($event)"><app-side-nab></app-side-nab></div>
+<div class="sbar" ><app-side-nab (onSidebarToggle)="onCollapse($event)"></app-side-nab></div>
