@@ -13,7 +13,10 @@
 
     <div class="flex align-items-start flex-column lg:justify-content-between lg:flex-row">
         <div>
-            <div class="font-medium text-3xl text-900"><p-image src="https://primefaces.org/cdn/primeng/images/galleria/galleria1.jpg" alt="Image" width="250"></p-image></div>
+            <div class="font-medium text-3xl text-900">
+                <img class="w-9 sm:w-16rem xl:w-10rem shadow-2 block xl:block mx-auto border-round"
+                    [src]="'https://primefaces.org/cdn/primeng/images/demo/product/' + product.image" [alt]="product.name" />
+            </div>
             <div class="flex align-items-center text-700 flex-wrap">
                 <div class="mr-5 flex align-items-center mt-3">
                     <span>{{product.price | currency: 'NGN'}} </span>

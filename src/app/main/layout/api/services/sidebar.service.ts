@@ -11,11 +11,16 @@ export class SidebarService implements OnInit {
     }
 
     getMode() {
+        const isDarkMode = localStorage.getItem('code_challenge_is_dark_mode');
+        if (isDarkMode) {
+            this.isDarkMode$.next(JSON.parse(isDarkMode));
+        }
         return this.isDarkMode$;
     }
 
 
     setMode(mode: boolean) {
+        localStorage.setItem('code_challenge_is_dark_mode', JSON.stringify(mode));
         return this.isDarkMode$.next(mode);
     }
     setCollapsibe(data: boolean) {
@@ -26,9 +31,7 @@ export class SidebarService implements OnInit {
     isCollapsed() {
         const is_collapse = localStorage.getItem('code_challenge_is_collapsed');
         if (is_collapse) {
-            console.log("🚀 ~ file: sidebar.service.ts:29 ~ SidebarService ~ isCollapsed ~ is_collapse:", JSON.parse(is_collapse))
             this.isCollapsed$.next(JSON.parse(is_collapse));
-            console.log('jsn', JSON.parse(is_collapse))
         }
         return this.isCollapsed$;
     }

@@ -1,7 +1,9 @@
 .snavDark {
     background: #001d3d;
+
 }
 
 .snavLight {
-    background: #d5bdaf
+    background: #adb5bd;
+    color: #001d3d;
 }

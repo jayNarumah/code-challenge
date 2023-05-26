@@ -1,23 +1,83 @@
 <ng-container>
     <div class="sidenav" [ngClass]="darkMode? 'snavDark': 'snavLight'" [ngStyle]="{'width': collapsed ? '15.5625rem': ''}"  >
         <div class="logo-container flex justify-content-beteen">
-            <button pButton pRipple class="logo p-button-rounded p-button-success p-button-text" [ngClass]="collapsed? 'pi pi-arrow-circle-left': 'pi pi-arrow-circle-right'" (click)="toggleSidebar()">
-    
+            <button pButton pRipple class="logo p-button-rounded p-button-success p-button-text" (click)="toggleSidebar()">
+                <span  *ngIf="collapsed">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-left-circle">
+                        <circle cx="12" cy="12" r="10"></circle>
+                        <polyline points="12 8 8 12 12 16"></polyline>
+                        <line x1="16" y1="12" x2="8" y2="12"></line>
+                    </svg>
+                </span>
+                <span *ngIf="!collapsed">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right-circle">
+                        <circle cx="12" cy="12" r="10"></circle>
+                        <polyline points="12 16 16 12 12 8"></polyline>
+                        <line x1="8" y1="12" x2="16" y2="12"></line>
+                    </svg>
+                </span>
             </button>
             
             
             <!-- <div class="log-text" @fadeInOut *ngIf="collapsed">Centaur</div> -->
             <!-- <button pButton pRipple class=" button-close mr-2"> -->
-            <i class="sidenav-link-icon ml-3" [ngClass]="darkMode? ' pi pi-sun' : ' pi pi-moon'" style="cursor: pointer;" (click)="changeMode()"
-                *ngIf="collapsed"></i>
+            <i class="sidenav-link-icon ml-3" @fadeInOut style="cursor: pointer;" (click)="changeMode()">
+            <span *ngIf="darkMode">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                    stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-sun">
+                    <circle cx="12" cy="12" r="5"></circle>
+                    <line x1="12" y1="1" x2="12" y2="3"></line>
+                    <line x1="12" y1="21" x2="12" y2="23"></line>
+                    <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                    <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                    <line x1="1" y1="12" x2="3" y2="12"></line>
+                    <line x1="21" y1="12" x2="23" y2="12"></line>
+                    <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                    <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                </svg>
+            </span>
+            <span *ngIf="!darkMode">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                    stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-moon">
+                    <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                </svg>
+            </span>
+        </i>
                 
         </div>
         <ul class="sidenav-nav">
-            <li class="sidenav-nav-item" *ngFor="let data of navData">
-                <a [routerLink]="data.routeLink" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"
+            <li class="sidenav-nav-item">
+                <a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"
                     class="sidenav-nav-link">
-                    <i class="sidenav-link-icon" [class]="data.icon"></i>
-                    <span class="sidenav-link-text" @fadeInOut *ngIf="collapsed">{{data.label}}</span>
+                    <i class="sidenav-link-icon">
+                        <span>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-monitor">
+                                <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
+                                <line x1="8" y1="21" x2="16" y2="21"></line>
+                                <line x1="12" y1="17" x2="12" y2="21"></line>
+                            </svg>
+                        </span>
+                    </i>
+                    <span class="sidenav-link-text" @fadeInOut *ngIf="collapsed">Manage Items</span>
+                </a>
+            </li>
+            <li class="sidenav-nav-item">
+                <a routerLink="/sales" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"
+                    class="sidenav-nav-link">
+                    <i class="sidenav-link-icon">
+                        <span>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-shopping-cart">
+                                <circle cx="9" cy="21" r="1"></circle>
+                                <circle cx="20" cy="21" r="1"></circle>
+                                <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+                            </svg>
+                        </span>
+                    </i>
+                    <span class="sidenav-link-text" @fadeInOut *ngIf="collapsed">Manage Sales</span>
                 </a>
             </li>
         </ul>
