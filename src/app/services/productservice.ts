@@ -3,11 +3,13 @@ import { Injectable } from '@angular/core';
 
 import { Product } from '../domain/product';
 import { environment } from 'src/environments/environment';
+import { BehaviorSubject } from 'rxjs';
 
 @Injectable({
     providedIn: 'root'
 })
 export class ProductService {
+    private products$: BehaviorSubject<Product[]> = new BehaviorSubject<Product[]>([]);
     baseUrl = `${environment.apiUrl}/data`;
 
     constructor(private http: HttpClient) { }
