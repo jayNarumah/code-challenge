@@ -1,11 +1,9 @@
-::root {
-    --background-color: #006d77;
-    --background: #000000;
-    --sidebar-background: #ededed;
+.bodyDark {
+    background: #22577a;
 }
 
-.sbar {
-    background-color: var(--background);
+.bodyLight {
+    background: #f8f7ff
 }
 
 .body {

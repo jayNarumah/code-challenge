@@ -35,7 +35,7 @@ body {
         width: 100%;
 
         .logo {
-            background: blueviolet;
+            background: transparent;
             text-align: center;
             width: 3rem;
             min-width: 3rem;
@@ -124,10 +124,13 @@ body {
 }
 
 .active {
-    background: whitesmoke;
+    background: green;
 
-    .sidenav-link-icon,
-    sidenav-link-text {
-        color: black;
+    .sidenav-link-icon {
+        color: green;
+    }
+
+    .sidenav-link-text {
+        color: green;
     }
 }

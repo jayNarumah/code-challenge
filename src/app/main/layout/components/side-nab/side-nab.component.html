@@ -1,14 +1,14 @@
 <ng-container>
-    <div class="sidenav" [ngStyle]="{'width': collapsed ? '15.5625rem': ''}" [ngClass]="darkMode ? 'dark' : 'light'">
-        <div class="logo-container">
-            <button pButton pRipple class="logo mr-" (click)="toggleSidebar()">
-                A
+    <div class="sidenav" [ngClass]="darkMode? 'snavDark': 'snavLight'" [ngStyle]="{'width': collapsed ? '15.5625rem': ''}"  >
+        <div class="logo-container flex justify-content-beteen">
+            <button pButton pRipple class="logo p-button-rounded p-button-success p-button-text" [ngClass]="collapsed? 'pi pi-arrow-circle-left': 'pi pi-arrow-circle-right'" (click)="toggleSidebar()">
+    
             </button>
-            &nbsp; &nbsp;
+            
             
             <!-- <div class="log-text" @fadeInOut *ngIf="collapsed">Centaur</div> -->
             <!-- <button pButton pRipple class=" button-close mr-2"> -->
-            <i class="sidenav-link-icon pi pi-moon ml-3" style="cursor: pointer;" (click)="changeMode()"
+            <i class="sidenav-link-icon ml-3" [ngClass]="darkMode? ' pi pi-sun' : ' pi pi-moon'" style="cursor: pointer;" (click)="changeMode()"
                 *ngIf="collapsed"></i>
                 
         </div>
