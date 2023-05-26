@@ -21,15 +21,8 @@ export class SaleService {
         return this.http.get<{ data: Sale }>(`${this.baseUrl}?/${id}`);
     }
 
-    create(product: Product, quantity) {
-        this.productServive.update(product.id, product).subscribe();
-
-        const saleRecord = {
-            id: new Date(),
-            productId: product.id,
-            quantity
-        }
-        return this.http.post<any>(`${this.baseUrl}`, saleRecord);
+    create(sale: Sale) {
+        return this.http.post<any>(`${this.baseUrl}`, sale);
     }
 
     update(id: string, saleData: Sale) {

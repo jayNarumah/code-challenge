@@ -1,4 +1,4 @@
-<div class="layout-wrapper">
+<div class="layout-wrapper p-3" style=" display: flex;flex-direction: column; min-width: 95%; min-height: 100vh; transition: margin-left .2s">
   <div class="layout-main-container">
     <div class="layout-main" [ngClass]="!isCollapsed ? 'body-trimmed' : 'body-md-screen' ">
       <router-outlet></router-outlet>
@@ -6,4 +6,5 @@
   </div>
   <div class="layout-mask"></div>
 </div>
+
 <div class="sbar" ><app-side-nab (onSidebarToggle)="onCollapse($event)"></app-side-nab></div>

@@ -1,4 +1,4 @@
-<div class="surface-section px-4 py-5 md:px-6 lg:px-8">
+<div class="surface-section px-4 py-5 md:px-6 lg:px-8  border-radius: 20px shadow-2">
     <ul class="list-none p-0 m-0 flex align-items-center font-medium mb-3">
         <li>
             <a class="text-500 no-underline line-height-3 text-primary cursor-pointer" routerLink="/sales">Manage Sales</a>
@@ -32,7 +32,7 @@
                     <p-inputNumber [(ngModel)]="quantity" [showButtons]="true" buttonLayout="horizontal" inputId="horizontal"
                         spinnerMode="horizontal" [step]="1" decrementButtonClass="p-button-danger"
                         incrementButtonClass="p-button-success" incrementButtonIcon="pi pi-plus" decrementButtonIcon="pi pi-minus"
-                        [min]="1"></p-inputNumber> <p-button icon="pi pi-shopping-cart" styleClass="p-button-success ml-3" (click)="buy()" [disabled]="totalQuantity < quantity"></p-button>
+                        [min]="1"></p-inputNumber> <p-button icon="pi pi-shopping-cart" styleClass="p-button-success ml-3" (click)="buy()" [disabled]="totalQuantity < quantity || quantity <=0 "></p-button>
                     
                 </div>
             </div>

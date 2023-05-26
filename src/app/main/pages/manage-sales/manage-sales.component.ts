@@ -5,11 +5,20 @@ import { Product, Sale } from 'src/app/domain/product';
 import { ProductService } from 'src/app/services/productservice';
 import { PdfService } from '../../layout/api/services/pdf.service';
 import { SaleService } from 'src/app/services/sales.endpoint';
+import { animate, state, style, transition, trigger } from '@angular/animations';
 
 @Component({
   selector: 'app-manage-sales',
   templateUrl: './manage-sales.component.html',
-  styleUrls: ['./manage-sales.component.css']
+  styleUrls: ['./manage-sales.component.css'],
+  animations: [
+    trigger('fadeIn', [
+      state('void', style({ opacity: 0, transform: 'translateY(10px)' })),
+      transition(':enter', [
+        animate('1s ease-in-out', style({ opacity: 1, transform: 'translateY(0)' }))
+      ])
+    ])
+  ]
 })
 
 export class ManageSalesComponent implements OnInit {
@@ -50,9 +59,6 @@ export class ManageSalesComponent implements OnInit {
     this.router.navigate(['/sales/detail', id]);
   }
 
-  getImageName(id: string) {
-    this.products.find((item) => item.id == id);
-  }
   getItemName(id: string) {
     const prod = this.products.find((item) => item.id == id);
     if (prod) {

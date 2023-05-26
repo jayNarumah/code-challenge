@@ -34,15 +34,4 @@ export class ProductService {
         return this.http.delete<void>(`${this.baseUrl}/${id}`);
     }
 
-    deleteMultiple(ids: string[]) {
-        console.log(ids)
-        const httpOpt = {
-            headers: new HttpHeaders({
-                'Content-Type': 'application/json'
-            }),
-            body: ids,
-        };
-        return this.http.delete<void>(`${this.baseUrl}`, httpOpt);
-    }
-
 }

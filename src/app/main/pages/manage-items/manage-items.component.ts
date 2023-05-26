@@ -129,8 +129,9 @@ export class ManageItemsComponent {
       else {
         const length = this.products.length + 1;
         this.product.id = (length + 500).toString();
-        const found = this.products.find((item) => item.id == this.product.id);
 
+        //to check whether the generated id already exist in the record
+        const found = this.products.find((item) => item.id == this.product.id);
         if (found) {
           this.saveProduct();
         }

@@ -1,7 +1,7 @@
 <ng-container>
     <div class="sidenav" [ngClass]="darkMode? 'snavDark': 'snavLight'" [ngStyle]="{'width': collapsed ? '15.5625rem': ''}"  >
-        <div class="logo-container flex justify-content-beteen">
-            <button pButton pRipple class="logo p-button-rounded p-button-success p-button-text" (click)="toggleSidebar()">
+        <div class="logo-container flex justify-content-between">
+            <button pButton pRipple class="logo p-button-text p-button-success" (click)="toggleSidebar()">
                 <span  *ngIf="collapsed">
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
                         stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-left-circle">
@@ -20,9 +20,7 @@
                 </span>
             </button>
             
-            
-            <!-- <div class="log-text" @fadeInOut *ngIf="collapsed">Centaur</div> -->
-            <!-- <button pButton pRipple class=" button-close mr-2"> -->
+            <div class="log-text" *ngIf="collapsed">Centaur Sys</div>
             <i class="sidenav-link-icon ml-3" @fadeInOut style="cursor: pointer;" (click)="changeMode()" *ngIf="collapsed">
             <span @fadeInOut *ngIf="darkMode">
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
@@ -65,7 +63,7 @@
                 </a>
             </li>
             <li class="sidenav-nav-item">
-                <a routerLink="/sales" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"
+                <a routerLink="/sales" routerLinkActive="active" 
                     class="sidenav-nav-link">
                     <i class="sidenav-link-icon">
                         <span>

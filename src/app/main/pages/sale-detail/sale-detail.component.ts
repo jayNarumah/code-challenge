@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { MessageService } from 'primeng/api';
 import { Product } from 'src/app/domain/product';
+import { ProductService } from 'src/app/services/productservice';
 import { SaleService } from 'src/app/services/sales.endpoint';
 
 @Component({
@@ -14,8 +15,10 @@ export class SaleDetailComponent implements OnInit {
   quantity: number;
   totalQuantity: number;
 
-  constructor(private readonly route: ActivatedRoute,
+  constructor(
+    private readonly route: ActivatedRoute,
     private messageService: MessageService,
+    private productService: ProductService,
     private saleService: SaleService,
   ) { }
   ngOnInit(): void {
@@ -32,19 +35,39 @@ export class SaleDetailComponent implements OnInit {
   }
 
   buy() {
+    if (this.totalQuantity < this.quantity || (this.totalQuantity - this.quantity) < 0 || this.quantity <= 0) {
+      this.messageService.add({ severity: 'warn', summary: 'Invalid Quantity', life: 3000 });
+      return;
+    }
     const newQuantity = this.totalQuantity - this.quantity;
     const data = {
       ...this.product,
       quantity: newQuantity
     };
-    this.saleService.create(data, this.quantity).subscribe({
-      next: (response) => {
-        this.messageService.add({ severity: 'success', summary: 'Successful', detail: 'Operation Successfully', life: 3000 });
-      },
+    const saleRecord = {
+      id: (new Date()).toString(),
+      productId: this.product.id,
+      quantity: this.product.quantity,
+      amount: (+this.product.quantity) * (+this.product.price),
+    }
+
+    this.productService.update(this.product.id, this.product).subscribe({
+      next: () => { },
       error: () => {
-        this.messageService.add({ severity: 'error', summary: 'Oops !!!', detail: 'Error occurred', life: 3000 });
+        this.messageService.add({ severity: 'error', summary: 'Error occured', life: 3000 });
+        return;
       }
     });
+
+    this.saleService.create(saleRecord).subscribe({
+      next: () => {
+        this.messageService.add({ severity: 'success', summary: 'Transaction successfully', life: 3000 });
+      },
+      error: (error) => {
+
+      },
+    });
+    this.quantity = 0;
   }
 
 }
