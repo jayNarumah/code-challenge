@@ -9,7 +9,6 @@ import { FormsModule } from "@angular/forms";
 import { MessageService } from "primeng/api";
 import { SideNabComponent } from "./layout/components/side-nab/side-nab.component";
 import { SaleDetailComponent } from "./pages/sale-detail/sale-detail.component";
-import { IconsModule } from "../primeng-ui/icons.module";
 import { ProductDetailResolver } from "./pages/resolvers/detail-page.resolver";
 const routes: Routes = [
     {
@@ -34,7 +33,7 @@ const routes: Routes = [
 ]
 @NgModule({
     declarations: [ManageItemsComponent, ManageSalesComponent, SaleDetailComponent],
-    imports: [CommonModule, PrimeNgUiModule, RouterModule.forChild(routes), FormsModule, IconsModule],
+    imports: [CommonModule, PrimeNgUiModule, RouterModule.forChild(routes), FormsModule],
     providers: [MessageService]
 })
 
