@@ -12,7 +12,7 @@
         </ng-template>
     </p-toolbar>
     
-    <div id="content table-container" #content>
+    <div id="content" class="table-container" #content>
         <p-table #dt [value]="products" [rows]="tableRows" [paginator]="true"
             [globalFilterFields]="['name','country.name','representative.name','status']" [(selection)]="selectedProducts"
             [rowHover]="true" dataKey="id" currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
@@ -134,5 +134,5 @@
         </ng-template>
     </p-dialog>
     
-    <p-confirmDialog [style]="{width: '450px'}"></p-confirmDialog>
+    
 </div>
