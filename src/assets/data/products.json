@@ -20,7 +20,7 @@
       "image": "chakra-bracelet.jpg",
       "price": 3200,
       "category": "Accessories",
-      "quantity": null,
+      "quantity": 0,
       "inventoryStatus": "LOWSTOCK",
       "rating": 3
     },
@@ -44,7 +44,7 @@
       "image": "game-controller.jpg",
       "price": 9900,
       "category": "Electronics",
-      "quantity": -2,
+      "quantity": 42,
       "inventoryStatus": "LOWSTOCK",
       "rating": 4
     },
@@ -56,7 +56,7 @@
       "image": "gold-phone-case.jpg",
       "price": 2400,
       "category": "Accessories",
-      "quantity": 0,
+      "quantity": 444,
       "inventoryStatus": "OUTOFSTOCK",
       "rating": 4
     },
@@ -116,7 +116,7 @@
       "image": "lime-band.jpg",
       "price": 7900,
       "category": "Fitness",
-      "quantity": 12,
+      "quantity": 142,
       "inventoryStatus": "INSTOCK",
       "rating": 3
     },
@@ -128,7 +128,7 @@
       "image": "mini-speakers.jpg",
       "price": 8500,
       "category": "Clothing",
-      "quantity": 42,
+      "quantity": 442,
       "inventoryStatus": "INSTOCK",
       "rating": 4
     },
@@ -140,7 +140,7 @@
       "image": "painted-phone-case.jpg",
       "price": 5600,
       "category": "Accessories",
-      "quantity": 41,
+      "quantity": 4441,
       "inventoryStatus": "INSTOCK",
       "rating": 5
     },
@@ -152,7 +152,7 @@
       "image": "pink-band.jpg",
       "price": 7900,
       "category": "Fitness",
-      "quantity": 60,
+      "quantity": 640,
       "inventoryStatus": "INSTOCK",
       "rating": 4
     },
@@ -326,7 +326,7 @@
       "inventoryStatus": "outofstock",
       "category": "Fitness",
       "price": 2222,
-      "quantity": 22,
+      "quantity": 2332,
       "id": "135",
       "image": "product-placeholder.svg",
       "code": "QGzm5"
@@ -336,7 +336,7 @@
     {
       "id": "1",
       "productId": "135",
-      "quantity": "2",
+      "quantity": "2343",
       "amount": "1200"
     },
     {
