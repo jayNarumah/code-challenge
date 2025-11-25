@@ -27,9 +27,23 @@ speed-measure-plugin.json
 !.vscode/launch.json
 !.vscode/extensions.json
 
-# misc
+# Cache files
 /.angular/cache
+.angular/cache
+**/.angular/cache
 /.sass-cache
+**/.sass-cache
+**/.cache
+**/cache
+*.cache
+.npm
+.yarn/cache
+.yarn/unplugged
+.yarn/build-state.yml
+.yarn/install-state.gz
+.pnp.*
+
+# misc
 /connect.lock
 /coverage
 /libpeerconnection.log
@@ -42,4 +56,3 @@ testem.log
 .DS_Store
 Thumbs.db
 *.angulardoc.json
-.angular\cache\*
