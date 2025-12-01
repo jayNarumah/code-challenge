@@ -1,1 +1,92 @@
-/* You can add global styles to this file, and also import other style files */
+/* CSS Layers for proper style precedence */
+@layer tailwind-base, primeng, tailwind-utilities;
+
+/* TailwindCSS Base */
+@layer tailwind-base {
+    @import 'tailwindcss';
+}
+
+/* PrimeNG Theme - styles are applied via PrimeNGConfig in main.ts */
+@layer primeng {
+    /* PrimeNG component styles are injected here via providePrimeNG */
+}
+
+/* TailwindCSS Utilities */
+@layer tailwind-utilities {
+    /* Tailwind utility classes */
+}
+
+/* Global Styles */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    font-size: 14px;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: var(--font-family, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif);
+    font-size: var(--font-size, 1rem);
+    color: var(--text-color, #495057);
+    background-color: var(--surface-ground, #f8f9fa);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    line-height: 1.5;
+}
+
+/* Utility Classes */
+.container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1rem;
+}
+
+/* Scrollbar Styling */
+::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--surface-ground, #f8f9fa);
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--surface-border, #dee2e6);
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--text-color-secondary, #6c757d);
+}
+
+/* PrimeNG Component Styles */
+.product-badge {
+    border-radius: 2px;
+    padding: 0.25em 0.5rem;
+    text-transform: uppercase;
+    font-weight: 700;
+    font-size: 0.75rem;
+    letter-spacing: 0.3px;
+}
+
+.product-badge.status-instock {
+    background: #c8e6c9;
+    color: #256029;
+}
+
+.product-badge.status-lowstock {
+    background: #feedaf;
+    color: #8a5340;
+}
+
+.product-badge.status-outofstock {
+    background: #ffcdd2;
+    color: #c63737;
+}

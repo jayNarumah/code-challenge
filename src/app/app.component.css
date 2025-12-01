@@ -1,4 +1,19 @@
+/* Component-specific styles */
 .table-header {
     display: flex;
     justify-content: space-between;
+    align-items: center;
+}
+
+/* Ensure PrimeNG components are properly styled */
+:host ::ng-deep {
+    /* Override PrimeNG styles if needed */
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .table-header {
+        flex-direction: column;
+        gap: 1rem;
+    }
 }
