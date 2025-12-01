@@ -1,20 +1,23 @@
 import { HttpClient } from '@angular/common/http';
-import { Injectable } from '@angular/core';
+import { Injectable, inject } from '@angular/core';
 
 import { Product } from '../domain/product';
 
-@Injectable()
+@Injectable({
+    providedIn: 'root'
+})
 export class ProductService {
+    private http = inject(HttpClient);
 
     status: string[] = ['OUTOFSTOCK', 'INSTOCK', 'LOWSTOCK'];
 
     productNames: string[] = [
-        "Bamboo Watch", 
-        "Black Watch", 
-        "Blue Band", 
-        "Blue T-Shirt", 
-        "Bracelet", 
-        "Brown Purse", 
+        "Bamboo Watch",
+        "Black Watch",
+        "Blue Band",
+        "Blue T-Shirt",
+        "Bracelet",
+        "Brown Purse",
         "Chakra Bracelet",
         "Galaxy Earrings",
         "Game Controller",
@@ -41,12 +44,10 @@ export class ProductService {
         "Yoga Set",
     ];
 
-    constructor(private http: HttpClient) { }
-
     getProducts() {
         return this.http.get<any>('assets/data/products.json')
-        .toPromise()
-        .then(res => <Product[]>res.data)
-        .then(data => { return data; });
+            .toPromise()
+            .then(res => <Product[]>res.data)
+            .then(data => { return data; });
     }
 }

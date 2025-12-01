@@ -1,44 +1,72 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, signal, inject } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
 import { ConfirmationService, MessageService } from 'primeng/api';
 import { Product } from './domain/product';
 import { ProductService } from './services/productservice';
 
+// PrimeNG Modules
+import { ButtonModule } from 'primeng/button';
+import { TableModule } from 'primeng/table';
+import { DialogModule } from 'primeng/dialog';
+import { ConfirmDialogModule } from 'primeng/confirmdialog';
+import { InputTextModule } from 'primeng/inputtext';
+import { TextareaModule } from 'primeng/textarea';
+import { InputNumberModule } from 'primeng/inputnumber';
+import { SelectModule } from 'primeng/select';
+import { RadioButtonModule } from 'primeng/radiobutton';
+import { RatingModule } from 'primeng/rating';
+import { ToolbarModule } from 'primeng/toolbar';
+import { ToastModule } from 'primeng/toast';
+
 @Component({
     selector: 'app-root',
+    standalone: true,
+    imports: [
+        CommonModule,
+        FormsModule,
+        ButtonModule,
+        TableModule,
+        DialogModule,
+        ConfirmDialogModule,
+        InputTextModule,
+        TextareaModule,
+        InputNumberModule,
+        SelectModule,
+        RadioButtonModule,
+        RatingModule,
+        ToolbarModule,
+        ToastModule
+    ],
+    providers: [ConfirmationService, MessageService],
     templateUrl: './app.component.html',
-    styleUrls: ['./app.component.css'],
-    providers: [ConfirmationService,MessageService,ProductService]
+    styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit {
+    private productService = inject(ProductService);
+    private messageService = inject(MessageService);
+    private confirmationService = inject(ConfirmationService);
 
-    productDialog: boolean;
+    productDialog = signal<boolean>(false);
+    products = signal<Product[]>([]);
+    product = signal<Product>({});
+    selectedProducts = signal<Product[]>([]);
+    submitted = signal<boolean>(false);
 
-    products: Product[];
-
-    product: Product;
-
-    selectedProducts: Product[];
-
-    submitted: boolean;
-
-    statuses: any[];
-
-    constructor(private productService: ProductService, private messageService: MessageService, private confirmationService: ConfirmationService) { }
+    statuses = [
+        { label: 'INSTOCK', value: 'instock' },
+        { label: 'LOWSTOCK', value: 'lowstock' },
+        { label: 'OUTOFSTOCK', value: 'outofstock' }
+    ];
 
     ngOnInit() {
-        this.productService.getProducts().then(data => this.products = data);
-
-        this.statuses = [
-            {label: 'INSTOCK', value: 'instock'},
-            {label: 'LOWSTOCK', value: 'lowstock'},
-            {label: 'OUTOFSTOCK', value: 'outofstock'}
-        ];
+        this.productService.getProducts().then(data => this.products.set(data));
     }
 
     openNew() {
-        this.product = {};
-        this.submitted = false;
-        this.productDialog = true;
+        this.product.set({});
+        this.submitted.set(false);
+        this.productDialog.set(true);
     }
 
     deleteSelectedProducts() {
@@ -47,16 +75,19 @@ export class AppComponent implements OnInit {
             header: 'Confirm',
             icon: 'pi pi-exclamation-triangle',
             accept: () => {
-                this.products = this.products.filter(val => !this.selectedProducts.includes(val));
-                this.selectedProducts = null;
-                this.messageService.add({severity:'success', summary: 'Successful', detail: 'Products Deleted', life: 3000});
+                const selected = this.selectedProducts();
+                this.products.update(products =>
+                    products.filter(val => !selected.includes(val))
+                );
+                this.selectedProducts.set([]);
+                this.messageService.add({ severity: 'success', summary: 'Successful', detail: 'Products Deleted', life: 3000 });
             }
         });
     }
 
     editProduct(product: Product) {
-        this.product = {...product};
-        this.productDialog = true;
+        this.product.set({ ...product });
+        this.productDialog.set(true);
     }
 
     deleteProduct(product: Product) {
@@ -65,55 +96,56 @@ export class AppComponent implements OnInit {
             header: 'Confirm',
             icon: 'pi pi-exclamation-triangle',
             accept: () => {
-                this.products = this.products.filter(val => val.id !== product.id);
-                this.product = {};
-                this.messageService.add({severity:'success', summary: 'Successful', detail: 'Product Deleted', life: 3000});
+                this.products.update(products =>
+                    products.filter(val => val.id !== product.id)
+                );
+                this.product.set({});
+                this.messageService.add({ severity: 'success', summary: 'Successful', detail: 'Product Deleted', life: 3000 });
             }
         });
     }
 
     hideDialog() {
-        this.productDialog = false;
-        this.submitted = false;
+        this.productDialog.set(false);
+        this.submitted.set(false);
     }
-    
-    saveProduct() {
-        this.submitted = true;
 
-        if (this.product.name.trim()) {
-            if (this.product.id) {
-                this.products[this.findIndexById(this.product.id)] = this.product;                
-                this.messageService.add({severity:'success', summary: 'Successful', detail: 'Product Updated', life: 3000});
+    saveProduct() {
+        this.submitted.set(true);
+        const currentProduct = this.product();
+
+        if (currentProduct.name?.trim()) {
+            if (currentProduct.id) {
+                this.products.update(products => {
+                    const index = this.findIndexById(currentProduct.id!, products);
+                    products[index] = currentProduct;
+                    return [...products];
+                });
+                this.messageService.add({ severity: 'success', summary: 'Successful', detail: 'Product Updated', life: 3000 });
             }
             else {
-                this.product.id = this.createId();
-                this.product.image = 'product-placeholder.svg';
-                this.products.push(this.product);
-                this.messageService.add({severity:'success', summary: 'Successful', detail: 'Product Created', life: 3000});
+                const newProduct = {
+                    ...currentProduct,
+                    id: this.createId(),
+                    image: 'product-placeholder.svg'
+                };
+                this.products.update(products => [...products, newProduct]);
+                this.messageService.add({ severity: 'success', summary: 'Successful', detail: 'Product Created', life: 3000 });
             }
 
-            this.products = [...this.products];
-            this.productDialog = false;
-            this.product = {};
+            this.productDialog.set(false);
+            this.product.set({});
         }
     }
 
-    findIndexById(id: string): number {
-        let index = -1;
-        for (let i = 0; i < this.products.length; i++) {
-            if (this.products[i].id === id) {
-                index = i;
-                break;
-            }
-        }
-
-        return index;
+    findIndexById(id: string, products: Product[]): number {
+        return products.findIndex(p => p.id === id);
     }
 
     createId(): string {
         let id = '';
         var chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
-        for ( var i = 0; i < 5; i++ ) {
+        for (var i = 0; i < 5; i++) {
             id += chars.charAt(Math.floor(Math.random() * chars.length));
         }
         return id;
